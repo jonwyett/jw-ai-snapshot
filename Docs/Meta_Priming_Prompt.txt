@@ -1,0 +1,17 @@
+As we conclude this development session, your task is to generate a complete, self-contained **priming prompt** that can be saved and used later to bring another AI assistant up to speed.
+
+This prompt will serve as a contextual summary of everything we've done so far in this project. Its purpose is to recreate your current working knowledge so that a future AI can resume development without missing context.
+
+The priming prompt should explain:
+- What this project is and what it's for
+- What it currently does and how it works
+- Which parts are complete, experimental, or planned
+- The design intent and philosophy behind the tool
+- How the developer uses it in practice
+- What would make sense to build next
+
+Write the prompt in a way that makes sense to a general-purpose LLM, as if you were briefing a colleague with no memory of the previous session. Be clear, specific, and structured. Use natural language, but favor clarity and hierarchy (bullets, numbered lists) when appropriate.
+
+Begin with a one-sentence summary of the project’s purpose. Then include all context needed to continue development with minimal friction. Avoid references to "this conversation" or "above" — the prompt should stand entirely on its own.
+
+You are now ready to generate that priming prompt.

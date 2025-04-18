@@ -1,0 +1,19 @@
+You've been working with me on a project that was initialized with a priming prompt. Now that we've made progress and discussed new features, it's time to generate an updated, comprehensive priming prompt that captures everything so far. This updated prompt will help you or other AI assistants continue the work with full context.
+Your task is to generate a complete, self-contained updated priming prompt that:
+
+Preserves all the essential context from the original priming prompt
+Incorporates all new features, decisions, and progress we've discussed in this session
+Updates the project status (what's now complete vs. experimental vs. planned)
+Reflects any evolution in the design philosophy or approach
+Documents any new usage patterns or developer workflows we've established
+Outlines the current priorities for future development
+
+Review our entire conversation and synthesize everything into a comprehensive, standalone prompt. The updated prompt should follow the same structure as the original:
+
+Begin with a one-sentence summary of the project's purpose
+Provide complete context needed to continue development
+Use clear, natural language with appropriate structure (bullets, numbered lists) for clarity
+Ensure it stands entirely on its own without references to "this conversation" or "above"
+
+Think of this as creating a "save point" that captures the current state of the project in its entirety, allowing anyone to pick up exactly where we left off.
+Please generate this updated priming prompt now.

@@ -1,0 +1,29 @@
+{
+    "name": "jw-ai-snapshot",
+    "version": "1.0.0",
+    "description": "Folder snapshotting tool meant for use with AI coding, or just other rapid local version commits",
+    "main": "snapshot.js",
+    "scripts": {
+      "test": "jest"
+    },
+    "devDependencies": {
+      "jest": "^29.7.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/jonwyett/jw-ai-snapshot.git"
+    },
+    "keywords": [
+      "snapshot",
+      "vibe-coding",
+      "backup",
+      "AI"
+    ],
+    "author": "Jonathan Wyett",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/jonwyett/jw-ai-snapshot/issues"
+    },
+    "homepage": "https://github.com/jonwyett/jw-ai-snapshot#readme"
+  }
+  

@@ -1,0 +1,25 @@
+# Ignore snapshot-specific files
+snapshot.js 
+.snapshotignore
+
+# Ignore snapshot directory
+__snapshots__/
+
+# Ignore system and temp files
+.DS_Store
+Thumbs.db
+
+# Ignore Node and environment config
+node_modules/
+.env
+.env.local
+npm-debug.log
+package-lock.json
+
+# IDE/project files
+.vscode/
+.idea/
+
+# Build/dist outputs
+dist/
+build/
