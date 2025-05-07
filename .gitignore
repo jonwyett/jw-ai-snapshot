@@ -135,5 +135,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# snapshots folder
+
+
+
+
+# snapshot.js: Ignore local snapshots directory
 __snapshots__/
