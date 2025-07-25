@@ -33,6 +33,10 @@
 
 # Dependencies
 node_modules/
+**/node_modules/
+**/.bin/
+.tsc-*
+*.tsc-*
 
 # OS & Editor specific
 .DS_Store

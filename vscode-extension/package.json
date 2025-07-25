@@ -1,0 +1,134 @@
+{
+  "name": "jw-ai-snapshot-vscode",
+  "displayName": "JW AI Snapshot",
+  "description": "VS Code extension for jw-ai-snapshot CLI tool - seamless snapshotting with AI-assisted analysis",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonwyett/jw-ai-snapshot.git",
+    "directory": "vscode-extension"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "jwSnapshot.snapshots",
+          "name": "Snapshots",
+          "when": "jwSnapshot.isInitialized"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "jwSnapshot.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "jwSnapshot.createSnapshot",
+        "title": "Create Snapshot",
+        "icon": "$(add)"
+      },
+      {
+        "command": "jwSnapshot.restoreSnapshot",
+        "title": "Restore this snapshot..."
+      },
+      {
+        "command": "jwSnapshot.deleteSnapshot",
+        "title": "Delete Snapshot..."
+      },
+      {
+        "command": "jwSnapshot.generatePromptCurrent",
+        "title": "Against Current Files"
+      },
+      {
+        "command": "jwSnapshot.generatePromptAnother",
+        "title": "Against Another Snapshot..."
+      },
+      {
+        "command": "jwSnapshot.analyzeRegression",
+        "title": "Analyze Regression from this Point"
+      },
+      {
+        "command": "jwSnapshot.diffCurrent",
+        "title": "Current Files"
+      },
+      {
+        "command": "jwSnapshot.diffAnother",
+        "title": "Another Snapshot..."
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "jwSnapshot.refresh",
+          "when": "view == jwSnapshot.snapshots",
+          "group": "navigation"
+        },
+        {
+          "command": "jwSnapshot.createSnapshot",
+          "when": "view == jwSnapshot.snapshots",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "jwSnapshot.restoreSnapshot",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "basic@1"
+        },
+        {
+          "command": "jwSnapshot.deleteSnapshot",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "basic@2"
+        },
+        {
+          "command": "jwSnapshot.generatePromptCurrent",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "ai@1"
+        },
+        {
+          "command": "jwSnapshot.generatePromptAnother",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "ai@2"
+        },
+        {
+          "command": "jwSnapshot.analyzeRegression",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "ai@3"
+        },
+        {
+          "command": "jwSnapshot.diffCurrent",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "diff@1"
+        },
+        {
+          "command": "jwSnapshot.diffAnother",
+          "when": "view == jwSnapshot.snapshots && viewItem == snapshot",
+          "group": "diff@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^4.9.4",
+    "@vscode/vsce": "^3.6.0"
+  }
+}

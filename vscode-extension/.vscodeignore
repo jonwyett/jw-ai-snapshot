@@ -1,0 +1,33 @@
+# Source files (we only need compiled JS)
+src/**
+tsconfig.json
+*.md
+!README.md
+
+# Development dependencies and build tools
+node_modules/**
+!node_modules/@types/**
+.vscode/**
+.vscode-test/**
+
+# Build artifacts we don't need
+**/*.map
+
+# Development files
+.gitignore
+.eslintrc.json
+webpack.config.js
+*.vsix
+
+# OS and editor files
+.DS_Store
+*.log
+Thumbs.db
+
+# Test files
+test/**
+**/*.test.js
+**/*.spec.js
+
+# Documentation (keep only README)
+CLAUDE.md
