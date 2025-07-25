@@ -22,10 +22,16 @@ describe('snapshot.js', () => {
     fs.writeFileSync(path.join(projectDir, 'a.txt'), 'lineA1\nlineA2\n');
     fs.writeFileSync(path.join(projectDir, 'b.txt'), 'lineB1\n');
 
-    // Create a snapshotignore that ignores 'ignored.txt'
+    // Create a snapshotignore that ignores 'ignored.txt' using new two-section format
     fs.writeFileSync(
       path.join(projectDir, '.snapshotignore'),
-      'ignored.txt\n'
+      `# jw-ai-snapshot Configuration File
+
+## ALWAYS SNAPSHOT (Exceptions to .gitignore)
+
+## NEVER SNAPSHOT (Snapshot-specific ignores)
+ignored.txt
+`
     );
 
     // Create a file we expect to be ignored
@@ -71,17 +77,17 @@ describe('snapshot.js', () => {
     expect(statuses['c.txt']).toBe('added');
   });
 
-  test('prompt file is generated with JSON diff inside', () => {
+  test('prompt file is generated with analysis content', () => {
     // first create a snapshot so index 0001 exists
     execSync(`node snapshot.js "first"`, { cwd: projectDir });
 
     execSync(`node snapshot.js 0001 --prompt`, { cwd: projectDir });
-    const promptFile = path.join(projectDir, '__snapshots__/prompt_0001_restore.txt');
+    const promptFile = path.join(projectDir, '__snapshots__/prompt_0001_analysis.md');
     expect(fs.existsSync(promptFile)).toBe(true);
 
     const content = fs.readFileSync(promptFile, 'utf8');
-    expect(content).toMatch(/Snapshot Regression Summary: 0001_first/);
-    expect(content).toMatch(/"files": \[/);
+    expect(content).toMatch(/Code Analysis Request: Identify Breaking Changes/);
+    expect(content).toMatch(/0001_first/);
   });
 
   test('restore brings back deleted files and prunes extraneous', () => {
@@ -117,5 +123,41 @@ describe('snapshot.js', () => {
     expect(fs.existsSync(path.join(projectDir, 'a.txt'))).toBe(true);
     expect(fs.existsSync(path.join(projectDir, 'b.txt'))).toBe(false);
     expect(fs.existsSync(path.join(projectDir, 'e.txt'))).toBe(true);
+  });
+
+  test('two-section ignore system works correctly', () => {
+    // Create a .gitignore that ignores build/
+    fs.writeFileSync(path.join(projectDir, '.gitignore'), 'build/\n*.log\n');
+    
+    // Create build directory and log files
+    fs.mkdirSync(path.join(projectDir, 'build'));
+    fs.writeFileSync(path.join(projectDir, 'build/app.js'), 'built app');
+    fs.writeFileSync(path.join(projectDir, 'test.log'), 'log content');
+    
+    // Create .snapshotignore that includes build/ but excludes test files
+    fs.writeFileSync(
+      path.join(projectDir, '.snapshotignore'),
+      `# jw-ai-snapshot Configuration File
+
+## ALWAYS SNAPSHOT (Exceptions to .gitignore)
+build/
+
+## NEVER SNAPSHOT (Snapshot-specific ignores)
+*test*
+`
+    );
+
+    execSync(`node snapshot.js "test ignore"`, { cwd: projectDir });
+    
+    const snapContents = fs.readdirSync(path.join(projectDir, '__snapshots__/0001_test_ignore'));
+    
+    // build/ should be included (overriding .gitignore)
+    expect(snapContents).toContain('build');
+    
+    // test.log should be excluded (from NEVER SNAPSHOT)
+    expect(snapContents).not.toContain('test.log');
+    
+    // a.txt should still be included (not affected by either rule)
+    expect(snapContents).toContain('a.txt');
   });
 });

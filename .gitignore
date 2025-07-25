@@ -136,8 +136,5 @@ dist
 .pnp.*
 
 
-
-
-
-# snapshot.js: Ignore local snapshots directory
+# jw-ai-snapshot: Ignore local snapshots directory
 __snapshots__/

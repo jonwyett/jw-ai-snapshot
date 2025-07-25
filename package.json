@@ -1,29 +1,48 @@
 {
     "name": "jw-ai-snapshot",
-    "version": "1.0.0",
-    "description": "Folder snapshotting tool meant for use with AI coding, or just other rapid local version commits",
+    "version": "2.0.0",
+    "description": "Lightweight AI-assisted development snapshotting tool with advanced two-section ignore system, diff engine, and regression analysis",
     "main": "snapshot.js",
     "scripts": {
-      "test": "jest"
+        "test": "jest"
     },
     "devDependencies": {
-      "jest": "^29.7.0"
+        "jest": "^29.7.0"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/jonwyett/jw-ai-snapshot.git"
+        "type": "git",
+        "url": "git+https://github.com/jonwyett/jw-ai-snapshot.git"
     },
     "keywords": [
-      "snapshot",
-      "vibe-coding",
-      "backup",
-      "AI"
+        "snapshot",
+        "vibe-coding",
+        "backup",
+        "AI",
+        "development",
+        "diff",
+        "regression-analysis",
+        "version-control",
+        "ai-assisted-development",
+        "gitignore",
+        "file-management"
     ],
     "author": "Jonathan Wyett",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/jonwyett/jw-ai-snapshot/issues"
+        "url": "https://github.com/jonwyett/jw-ai-snapshot/issues"
     },
-    "homepage": "https://github.com/jonwyett/jw-ai-snapshot#readme"
-  }
-  
+    "homepage": "https://github.com/jonwyett/jw-ai-snapshot#readme",
+    "dependencies": {
+        "diff": "^8.0.2"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "bin": {
+        "jw-ai-snapshot": "./snapshot.js"
+    },
+    "files": [
+        "snapshot.js",
+        "README.md"
+    ]
+}

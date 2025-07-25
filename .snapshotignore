@@ -1,38 +1,47 @@
-# Snapshot.js Configuration: Managed by the tool. Do not remove these lines.
-# ADD_TO_GITIGNORE=FALSE
-# USE_GITIGNORE=TRUE
+# jw-ai-snapshot Configuration File
+# This file works WITH your .gitignore, not against it. The snapshot tool
+# will always use your .gitignore rules as a base. This file lets you
+# manage the exceptions.
 
-# Check if the __snapshots__ directory is in the .gitignore file
+#-----------------------------------------------------------------------
+## ALWAYS SNAPSHOT (Exceptions to .gitignore)
+#-----------------------------------------------------------------------
+# Add files or folders here that you WANT to include in snapshots,
+# even if your .gitignore file ignores them.
+#
+# COMMON USE CASE: Your .gitignore probably ignores 'build/' or 'dist/'.
+# Add 'build/' here to make sure your snapshots contain those critical
+# build artifacts, creating a fully working copy.
+#
+# ANOTHER USE CASE: To snapshot environment files, add '.env' here.
 
-# Use the .gitignore file as well as the .snapshotignore file
+# build/
+# .env
 
-# This flag will add the __snapshots__ directory to the .gitignore file if it is not already present
 
-# This flag will tell snapshot.js to use the .gitignore file as well as the .snapshotignore file
+#-----------------------------------------------------------------------
+## NEVER SNAPSHOT (Snapshot-specific ignores)
+#-----------------------------------------------------------------------
+# Add files or folders here that should ONLY be ignored for snapshots.
+# This is useful for large assets or logs that you track in git but
+# don't need in every quick code snapshot.
 
-# Ignore snapshot-specific files
-# NOTE: is there a good reason not to back these up?
-#snapshot.js 
-#.snapshotignore
+# --- Default Safe Ignores ---
 
-# Ignore snapshot directory
-__snapshots__/
+# Version Control
+.git/
 
-# Ignore system and temp files
-.DS_Store
-Thumbs.db
-
-# Ignore Node and environment config
+# Dependencies
 node_modules/
-.env
-.env.local
-npm-debug.log
-package-lock.json
 
-# IDE/project files
+# OS & Editor specific
+.DS_Store
 .vscode/
 .idea/
 
-# Build/dist outputs
-dist/
-build/
+# Logs
+*.log
+
+# Environment Files (un-comment the lines below to ignore them)
+.env
+.env.local
